@@ -1,0 +1,39 @@
+---
+title: "`twemoji` introduction"
+author: "Kenton Russell"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{twemoji introduction}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r}
+library(remoji)
+library(htmltools)
+library(stringi)
+
+twemoji()
+```
+
+```{r}
+tags$p(HTML("I &#x1F497; emoji!"))
+```
+
+<p>I &#x1F497; emoji!</p>
+
+
+```{r}
+tagList(
+  lapply(
+    find_emoji(""),
+    function(heart){
+      tags$div(
+        style="float:left;",
+        HTML(stri_trans_general(emoji(heart),"any-hex/xml"))
+      )
+    }
+  )
+)
+```

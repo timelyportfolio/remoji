@@ -1,0 +1,32 @@
+---
+title: "Emoji Fun"
+author: "Kent Russell"
+date: "October 23, 2015"
+output: html_document
+---
+
+```{r}
+library(remoji)
+library(htmltools)
+library(stringi)
+
+twemoji()
+```
+
+```{r}
+tags$p(HTML("I &#x1F497; emoji!"))
+```
+
+<p>I &#x1F497; emoji!</p>
+
+
+```{r}
+tagList(
+  lapply(
+    find_emoji(""),
+    function(heart){
+      tags$div(style="float:left;",HTML(stri_trans_general(emoji(heart),"any-hex/xml")))
+    }
+  )
+)
+```

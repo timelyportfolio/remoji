@@ -1,0 +1,44 @@
+library(htmltools)
+library(stringi)
+library(remoji)
+
+browsable(
+  tagList(
+    twemoji(),
+    tags$p(HTML("I &#x1F497; emoji!")),
+    tags$h2("hearts"),
+    lapply(
+      find_emoji("heart"),
+      function(heart){
+        tags$div(
+          style="float:left;",
+          HTML(stri_trans_general(emoji(heart),"any-hex/xml"))
+        )
+      }
+    ),
+    tags$br(),
+    tags$hr(),
+    tags$h2("sun"),
+    lapply(
+      find_emoji("sun"),
+      function(sun){
+        tags$div(
+          style="float:left;",
+          HTML(stri_trans_general(emoji(sun),"any-hex/xml"))
+        )
+      }
+    ),
+    tags$br(),
+    tags$hr(),
+    tags$h2("hi"),
+    lapply(
+      find_emoji("hi"),
+      function(hi){
+        tags$div(
+          style="float:left;",
+          HTML(stri_trans_general(emoji(hi),"any-hex/xml"))
+        )
+      }
+    )      
+  )
+)

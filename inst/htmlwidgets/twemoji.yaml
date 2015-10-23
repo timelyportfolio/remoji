@@ -1,0 +1,6 @@
+dependencies:
+  - name: twemoji
+    version: 1.4.1
+    src: htmlwidgets/lib/twemoji
+    script: twemoji.min.js
+    stylesheet: twemoji.css
