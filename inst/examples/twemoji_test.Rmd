@@ -25,7 +25,10 @@ tagList(
   lapply(
     find_emoji(""),
     function(heart){
-      tags$div(style="float:left;",HTML(stri_trans_general(emoji(heart),"any-hex/xml")))
+      tags$div(
+        style="float:left;",
+        HTML(stri_trans_general(emoji(heart),"any-hex/xml"))
+      )
     }
   )
 )

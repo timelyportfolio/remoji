@@ -49,7 +49,7 @@ browsable(
       find_emoji("moon"),
       function(emoj){
         tags$div(
-          style="float:left;height:4em;width:4em;",
+          style="float:left;height:6em;width:6em;",
           HTML(stri_trans_general(emoji(emoj),"any-hex/xml"))
         )
       }
