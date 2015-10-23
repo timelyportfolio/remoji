@@ -6,7 +6,7 @@ browsable(
   tagList(
     twemoji(),
     tags$p(HTML("I &#x1F497; emoji!")),
-    tags$h2("hearts"),
+    tags$h2(style="display:block;","hearts"),
     lapply(
       find_emoji("heart"),
       function(heart){
@@ -16,8 +16,7 @@ browsable(
         )
       }
     ),
-    tags$br(),
-    tags$hr(),
+    tags$hr(style="clear:both;"),
     tags$h2("sun"),
     lapply(
       find_emoji("sun"),
@@ -28,8 +27,7 @@ browsable(
         )
       }
     ),
-    tags$br(),
-    tags$hr(),
+    tags$hr(style="clear:both;"),
     tags$h2("hi"),
     lapply(
       find_emoji("hi"),
@@ -40,5 +38,21 @@ browsable(
         )
       }
     )      
+  )
+)
+
+# use SVG instead of PNG
+browsable(
+  tagList(
+    twemoji(svg=TRUE),
+    lapply(
+      find_emoji("moon"),
+      function(emoj){
+        tags$div(
+          style="float:left;height:4em;width:4em;",
+          HTML(stri_trans_general(emoji(emoj),"any-hex/xml"))
+        )
+      }
+    )
   )
 )
