@@ -1,3 +1,5 @@
+#devtools::install_github("timelyportfolio/remoji@twemoji")
+
 library(htmltools)
 library(stringi)
 library(remoji)
@@ -56,3 +58,22 @@ browsable(
     )
   )
 )
+
+
+# try to use twemoji with use element in SVG
+browsable(HTML('
+<svg viewBox="0 0 100 100">
+  <use xlink:href="http://twemoji.maxcdn.com/svg/1f31d.svg#g10"></use>
+</svg>
+'))
+
+
+library(networkD3)
+data(MisLinks)
+data(MisNodes)
+# Create graph with legend and varying node radius
+forceNetwork(Links = MisLinks, Nodes = MisNodes, Source = "source",
+             Target = "target", Value = "value", NodeID = "name",
+             Nodesize = "size",
+             radiusCalculation = "30",
+             Group = "group", opacity = 0.4, legend = TRUE)
